@@ -2,6 +2,8 @@ name: demo github actions
 on:
   push:
     branches: [develop]
+  pull_request:
+    types: [opened, closed, synchronize]
 jobs:
   jobs_1: 
     runs-on: ubuntu-latest
@@ -16,6 +18,12 @@ jobs:
          node-version: 14
       - name: install node_module
         run: npm i
-      - run: npm run lint
+      # - run: npm run lint
+      - name: Using action reviewdog
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review # Change reporter.
+          eslint_flags: 'src/'
       
   
