@@ -1,9 +1,15 @@
 name: demo github actions
 on:
   push:
+    # paths:
+    #   - "!README.md"
+    #   - "feature/**"
+    #   - "!docs/**"
     branches: [develop]
   pull_request:
     types: [opened, closed, synchronize]
+env:
+  SURGE_DOMAIN: demo-fe-github-action.surge.sh
 jobs:
   jobs_1: 
     runs-on: ubuntu-latest
@@ -25,5 +31,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review # Change reporter.
           eslint_flags: 'src/'
-      
-  
+      - name: deploy surge
+        run: npm install -g surge
+      - run: surge ./ $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+  # demo-fe-github-action.surge.sh
