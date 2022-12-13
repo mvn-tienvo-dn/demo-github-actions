@@ -33,5 +33,6 @@ jobs:
           eslint_flags: 'src/'
       - name: deploy surge
         run: npm install -g surge
-      - run: surge ./ $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+      - run: npm run build
+      - run: surge ./build $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
   # demo-fe-github-action.surge.sh
