@@ -5,7 +5,7 @@ module.exports = {
         "node": true
     },
     "extends": [
-        "eslint:recommended",
+        // "eslint:recommended",
         "plugin:react/recommended"
     ],
     "overrides": [
@@ -25,7 +25,6 @@ module.exports = {
             }
         ],
         "react/react-in-jsx-scope": "off",
-        "no-console": "error",
-        "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+        "no-console": ["error", { allow: ["warn", "error"] }]
     }
 }
