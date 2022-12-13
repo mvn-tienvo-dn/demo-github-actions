@@ -1,0 +1,11 @@
+name: demo github actions
+on:
+  push:
+    branches: [develop]
+jobs:
+  jobs_1: 
+    runs-on: ubuntu-latest
+    steps:
+      # - name: in ra cau lenh helo
+      - run: echo bao c.an ba tien ca do 
+  
